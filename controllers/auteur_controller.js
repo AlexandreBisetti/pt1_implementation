@@ -39,16 +39,17 @@ exports.findAll = (req, res) => {
 };
 
 // trouver 1 auteur par ID
+// req.params.auteursID correspond à la route setup.
 exports.findOne = (req, res) => {
-    Auteur.findById(req.params.auteurID, (err, data) => {
+    Auteur.findById(req.params.auteursID, (err, data) => {
         if (err) {
           if (err.kind === "pas trouvé") {
             res.status(404).send({
-              message: `Auteur pas trouvé avec id ${req.params.auteurID}.`
+              message: `Auteur pas trouvé avec id ${req.params.auteursID}.`
             });
           } else {
             res.status(500).send({
-              message: "Erreur lors de la recherche auteur avec id " + req.params.auteurID
+              message: "Erreur lors de la recherche auteur avec id " + req.params.auteursID
             });
           }
         } else res.send(data);
@@ -57,15 +58,15 @@ exports.findOne = (req, res) => {
 
 // delete 1 auteur par ID
 exports.delete = (req, res) => {
-    Auteur.remove(req.params.auteurID, (err, data) => {
+    Auteur.remove(req.params.auteursID, (err, data) => {
         if (err) {
           if (err.kind === "pas trouvé") {
             res.status(404).send({
-              message: `Auteur pas trouvé avec id ${req.params.auteurID}.`
+              message: `Auteur pas trouvé avec id ${req.params.auteursID}.`
             });
           } else {
             res.status(500).send({
-              message: "Impossible de supprimer auteur avec id " + req.params.auteurID
+              message: "Impossible de supprimer auteur avec id " + req.params.auteursID
             });
           }
         } else res.send({ message: `Auteur supprimé` });

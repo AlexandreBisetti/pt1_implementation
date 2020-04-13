@@ -15,13 +15,13 @@ Auteur.create = (newAuteur, result) => {
       result(err, null);
       return;
     }
-    console.log("nouvel auteur: ", { id: res.i, ...newAuteur });
+    console.log("nouvel auteur: ", { id: res.insertId, ...newAuteur });
     result(null, { id: res.insertId, ...newAuteur });
   });
 };
 
-Auteur.findById = (auteurID, result) => {
-  sql.query(`SELECT * FROM Auteur WHERE ID_auteur = ${auteurID}`, (err, res) => {
+Auteur.findById = (auteursID, result) => {
+  sql.query(`SELECT * FROM Auteur WHERE ID_auteur = ${auteursID}`, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
@@ -53,7 +53,7 @@ Auteur.getAll = result => {
 };
 
 Auteur.remove = (id, result) => {
-  sql.query("DELETE FROM Auteur WHERE ID_auteur = ?", id, (err, res) => {
+  sql.query(`DELETE FROM Auteur WHERE ID_auteur = ${id}`, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);

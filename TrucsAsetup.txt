@@ -1,0 +1,50 @@
+Auteur: DONE
+    - Ajouter auteur:
+    - Supprimer auteur par ID
+    - chercher auteur par ID
+    - Liste de tout les auteurs.
+    - Retourne id pour nom/prenom auteur --> CONTENU DANS LA REPONSE JSON APRES INSERTION, on retourne un JSON quand on insère un auteur
+
+Alias:
+    - Ajouter un alias pour un auteur.
+    - List de tout les auteurs correspondant à l'allias
+
+Auteur_Livre:
+    - Ajouter id auteur + id livre correspondant
+    - Liste des livre écrit pas un auteur
+
+Personne: DONE
+    - Ajoute une Personne
+    - Supprimer une Personne
+    - Retourne id pour nom/prenom personne --> CONTENU DANS LA REPONSE JSON APRES INSERTION, on retourne un JSON quand on insère un auteur
+
+Client :
+    - Ajouter Client
+    - Supprimer Client par ID
+    - chercher Client par ID
+    - Liste de tout les Client.
+
+Employe :
+    - Ajouter Employe
+    - Supprimer Employe par ID
+    - chercher Employe par ID
+    - Liste de tout les Employe.
+
+Genre :
+    - Ajouter Genre
+    - Supprimer Genre
+
+Genre_livre:
+    - Ajouter id_livre + id_genre correspondant
+    - Liste des livre de tel Genre
+
+Livre :
+    - Ajouter livre
+    - Supprimer livre par ID
+    - chercher livre par ID
+    - Liste de tout les livres.
+
+Truc WTF à faire:
+    -  Un livre est donner par une personne --> id personne obligatoire
+    -  Echange  d'un livre --> id de la personne qui le prend doit être dans ID_personne_Echange
+    -  Un employé doit vérifié livre --> Verifie passe à true et id_personne_employe doit être saisi
