@@ -17,6 +17,8 @@ app.get("/", (req, res) => {
 
 require("./routes/auteur_routes")(app);
 require("./routes/personne_routes")(app);
+require("./routes/client_routes")(app);
+//require("./routes/employe_routes")(app);
 
 // Connection MYSQL
   connection.connect(error => {

@@ -18,7 +18,7 @@ Personne: DONE
     - Supprimer une Personne
     - Retourne id pour nom/prenom personne --> CONTENU DANS LA REPONSE JSON APRES INSERTION, on retourne un JSON quand on insère un auteur
 
-Client :
+Client : DONE
     - Ajouter Client
     - Supprimer Client par ID
     - chercher Client par ID
