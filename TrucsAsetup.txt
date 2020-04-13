@@ -22,7 +22,7 @@ Employe : DONE
     - chercher Employe par ID
     - Liste de tout les Employe.
 
-Livre :
+Livre : DONE
     - Ajouter livre
     - Supprimer livre par ID
     - chercher livre par ID
