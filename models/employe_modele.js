@@ -20,7 +20,7 @@ Employe.create = (newEmploye, result) => {
 };
 
 Employe.findById = (employesID, result) => {
-  sql.query("SELECT * FROM Employe WHERE ID_personne = ?", employesID, (err, res) => {
+  sql.query("SELECT * FROM Employe, Personne WHERE Employe.ID_personne = Personne.ID_personne and Employe.ID_personne = ?", employesID, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
@@ -38,7 +38,7 @@ Employe.findById = (employesID, result) => {
 };
 
 Employe.getAll = result => {
-  sql.query("SELECT * FROM Employe", (err, res) => {
+  sql.query("SELECT * FROM Employe, Personne WHERE Employe.ID_personne = Personne.ID_personne", (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);
@@ -51,7 +51,7 @@ Employe.getAll = result => {
 };
 
 Employe.remove = (id, result) => {
-  sql.query("DELETE FROM Employe WHERE ID_personne = ?", id, (err, res) => {
+  sql.query("DELETE FROM Employe, Personne WHERE Employe.ID_personne = Personne.ID_personne and Employe.ID_personne = ?", id, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);

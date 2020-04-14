@@ -22,7 +22,7 @@ Client.create = (newClient, result) => {
 };
 
 Client.findById = (clientsID, result) => {
-  sql.query("SELECT * FROM Client WHERE ID_personne = ?", clientsID, (err, res) => {
+  sql.query("SELECT * FROM Client, Personne WHERE Client.ID_personne = Personne.ID_personne and Client.ID_personne = ?", clientsID, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
@@ -39,7 +39,7 @@ Client.findById = (clientsID, result) => {
 };
 
 Client.getAll = result => {
-  sql.query("SELECT * FROM Client", (err, res) => {
+  sql.query("SELECT * FROM Client, Personne WHERE Client.ID_personne = Personne.ID_personne", (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);
@@ -52,7 +52,7 @@ Client.getAll = result => {
 };
 
 Client.remove = (id, result) => {
-  sql.query("DELETE FROM Client WHERE ID_personne = ?", id, (err, res) => {
+  sql.query("DELETE FROM Client, Personne WHERE Client.ID_personne = Personne.ID_personne and Client.ID_personne = ?", id, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);

@@ -24,7 +24,7 @@ Livre.create = (newLivre, result) => {
 };
 
 Livre.findById = (livresID, result) => {
-  sql.query("SELECT * FROM Auteur WHERE ID_Livre = ?", livresID, (err, res) => {
+  sql.query("SELECT DISTINCT * FROM Genre, Livre, Genre_livre, Auteur, Auteur_livre WHERE Genre.ID_genre = Genre_livre.ID_genre and Genre_livre.ID_livre = Livre.ID_livre and Auteur.ID_auteur = Auteur_livre.ID_auteur and Livre.ID_livre = Auteur_livre.ID_livre and Livre.ID_livre = ?", livresID, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
@@ -42,13 +42,13 @@ Livre.findById = (livresID, result) => {
 };
 
 Livre.getAll = result => {
-  sql.query("SELECT * FROM Livre", (err, res) => {
+  sql.query("SELECT DISTINCT * FROM Genre, Livre, Genre_livre, Auteur, Auteur_livre WHERE Genre.ID_genre = Genre_livre.ID_genre and Genre_livre.ID_livre = Livre.ID_livre and Auteur.ID_auteur = Auteur_livre.ID_auteur and Livre.ID_livre = Auteur_livre.ID_livre", (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);
       return;
     }
-
+    console.log("aawwwwwwwwwwwwwwwwwwwwwww");
     console.log("Liste des livres: ", res);
     result(null, res);
   });
