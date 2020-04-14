@@ -28,11 +28,20 @@ Livre : DONE
     - chercher livre par ID
     - Liste de tout les livres.
 
-Genre :
+Genre : DONE
     - Ajouter Genre
     - Supprimer Genre
 
-Alias: 
+Livre_Enregistre: DONE
+    - Ajouter id_personne qui prend 1 livre dans livre
+
+Livre_Echange: DONE
+    - Ajouter id_personne qui prend 1 livre dans livre
+
+Livre_Verifie: DONE
+    - Ajouter id_personne pour employe qui vérifie livre.
+
+Alias: DONE
     - Ajouter un alias pour un auteur.
     - List de tout les auteurs correspondant à l'allias
 
@@ -55,12 +64,6 @@ Interet_livre:
 Interet_auteur:
     - Ajouter id_auteur+ id_personne correspondant
     - Liste des intérêts d'une personne par auteur
-
-Livre_Echange
-    - Ajouter id_personne qui prend 1 livre dans livre
-
-Livre_Verifie
-    - Ajouter id_personne pour employe qui vérifie livre.
 
 Truc WTF à faire:
     -  Un livre est donner par une personne --> id personne obligatoire

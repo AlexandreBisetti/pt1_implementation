@@ -48,7 +48,6 @@ Livre.getAll = result => {
       result(null, err);
       return;
     }
-    console.log("aawwwwwwwwwwwwwwwwwwwwwww");
     console.log("Liste des livres: ", res);
     result(null, res);
   });
@@ -69,6 +68,42 @@ Livre.remove = (id, result) => {
 
     console.log("Livre avec id supprimé: ", id);
     result(null, res);
+  });
+};
+
+Livre.Prendre = (livresID, idEchange, result) => {
+  sql.query(`UPDATE Livre SET ID_Personne_Echange = ${idEchange} WHERE ID_Livre = ${livresID}`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Livre pris", { id_livre: livresID, id_preneur: idEchange });
+    result(null, { id_livre: livresID, id_preneur: idEchange });
+  });
+};
+
+Livre.Verifie = (livresID, idVerifie, result) => {
+  sql.query(`UPDATE Livre SET ID_Personne_Employe = ${idVerifie}, Verifie = 1 WHERE ID_Livre = ${livresID}`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Livre verifié", { id_livre: livresID, id_employeVerifiant: idVerifie });
+    result(null, { id_livre: livresID, id_employeVerifiant: idVerifie });
+  });
+};
+
+Livre.Enregistrer = (livresID, idEnregistre, result) => {
+  sql.query(`UPDATE Livre SET ID_Personne_Enregistre = ${idEnregistre} WHERE ID_Livre = ${livresID}`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Livre enregistré", { id_livre: livresID, id_enrigistrage: idEnregistre });
+    result(null, { id_livre: livresID, id_enrigistrage: idEnregistre });
   });
 };
 
