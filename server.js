@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-// default route serveur
+// default route serveur, si une requête sur ce path on retourne
+// comme "res (result)" un json.
 app.get("/", (req, res) => {
   res.json({ message: "Wallah t'es sur la page FDP." });
 });

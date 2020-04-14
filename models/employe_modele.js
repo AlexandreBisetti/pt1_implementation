@@ -20,7 +20,7 @@ Employe.create = (newEmploye, result) => {
 };
 
 Employe.findById = (employesID, result) => {
-  sql.query(`SELECT * FROM Employe WHERE ID_personne = ${employesID}`, (err, res) => {
+  sql.query("SELECT * FROM Employe WHERE ID_personne = ?", employesID, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
@@ -51,7 +51,7 @@ Employe.getAll = result => {
 };
 
 Employe.remove = (id, result) => {
-  sql.query(`DELETE FROM Employe WHERE ID_personne = ${id}`, (err, res) => {
+  sql.query("DELETE FROM Employe WHERE ID_personne = ?", id, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);

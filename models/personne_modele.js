@@ -21,7 +21,7 @@ Personne.create = (newPersonne, result) => {
 };
 
 Personne.remove = (id, result) => {
-    sql.query(`DELETE FROM Personne WHERE ID_personne = ${id}`, (err, res) => {
+    sql.query("DELETE FROM Personne WHERE ID_personne = ?", id, (err, res) => {
         if (err) {
             console.log("erreur: ", err);
             result(null, err);

@@ -24,7 +24,7 @@ Livre.create = (newLivre, result) => {
 };
 
 Livre.findById = (livresID, result) => {
-  sql.query(`SELECT * FROM Auteur WHERE ID_Livre = ${livresID}`, (err, res) => {
+  sql.query("SELECT * FROM Auteur WHERE ID_Livre = ?", livresID, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
@@ -55,7 +55,7 @@ Livre.getAll = result => {
 };
 
 Livre.remove = (id, result) => {
-  sql.query(`DELETE FROM Livre WHERE ID_Livre = ${id}`, (err, res) => {
+  sql.query("DELETE FROM Livre WHERE ID_Livre = ?", id, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);
