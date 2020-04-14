@@ -24,6 +24,7 @@ require("./routes/livre_routes")(app);
 require("./routes/genre_routes")(app);
 require("./routes/alias_routes")(app);
 require("./routes/auteurLivre_routes")(app);
+require("./routes/genreLivre_routes")(app);
 
 // Connection MYSQL
   connection.connect(error => {
