@@ -45,7 +45,7 @@ Alias: DONE
     - Ajouter un alias pour un auteur.
     - List de tout les auteurs correspondant à l'allias
 
-Auteur_Livre:
+Auteur_Livre: DONE
     - Ajouter id auteur + id livre correspondant
     - Liste des livre écrit pas un auteur
 

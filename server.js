@@ -23,6 +23,7 @@ require("./routes/employe_routes")(app);
 require("./routes/livre_routes")(app);
 require("./routes/genre_routes")(app);
 require("./routes/alias_routes")(app);
+require("./routes/auteurLivre_routes")(app);
 
 // Connection MYSQL
   connection.connect(error => {
