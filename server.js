@@ -3,12 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const connection = require("./DataB");
+const cors = require('cors');
 
 // parse pour le body --> req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(cors());
 
 // default route serveur, si une requête sur ce path on retourne
 // comme "res (result)" un json.
