@@ -49,7 +49,7 @@ Auteur_Livre: DONE
     - Ajouter id auteur + id livre correspondant
     - Liste des livre écrit pas un auteur
 
-Genre_livre:
+Genre_livre: DONE
     - Ajouter id_livre + id_genre correspondant
     - Liste des livre de tel Genre
 
@@ -65,7 +65,8 @@ Interet_auteur:
     - Ajouter id_auteur+ id_personne correspondant
     - Liste des intérêts d'une personne par auteur
 
-Truc WTF à faire:
+Truc WTF à faire: DONE
+    - Livre affichier recommandation par auteur/genre, genre et auteur
     -  Un livre est donner par une personne --> id personne obligatoire
     -  Echange  d'un livre --> id de la personne qui le prend doit être dans ID_personne_Echange
     -  Un employé doit vérifié livre --> Verifie passe à true et id_personne_employe doit être saisi

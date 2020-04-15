@@ -118,3 +118,36 @@ exports.delete = (req, res) => {
     } else res.send({ message: `Livre supprimé` });
   });
 };
+
+exports.findRecommandationBOTH = (req, res) => {
+  Livre.RecommandationsBOTH(req.params.idPersonne, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Erreur récupération recommandations."
+      });
+    else res.send(data);
+  });
+};
+
+exports.findRecommandationAUTEURS = (req, res) => {
+  Livre.RecommandationsAUTEURS(req.params.idPersonne, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Erreur récupération recommandations."
+      });
+    else res.send(data);
+  });
+};
+
+exports.findRecommandationGENRES = (req, res) => {
+  Livre.RecommandationsGENRES(req.params.idPersonne, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Erreur récupération recommandations."
+      });
+    else res.send(data);
+  });
+};

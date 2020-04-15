@@ -20,4 +20,13 @@ module.exports = app => {
 
   // Del livre par ID
   app.delete("/livres/:livresID", livre.delete);
+
+  // Livre recommandations auteur + genre match
+  app.get("/livres/recommandations/listeBOTH/:idPersonne", livre.findRecommandationBOTH);
+
+  // Livre recommandations auteur match
+  app.get("/livres/recommandations/listeAUTEURS/:idPersonne", livre.findRecommandationAUTEURS);
+
+  // Livre recommandations genre match
+  app.get("/livres/recommandations/listeGENRES/:idPersonne", livre.findRecommandationGENRES);
 };
