@@ -53,7 +53,7 @@ Genre_livre: DONE
     - Ajouter id_livre + id_genre correspondant
     - Liste des livre de tel Genre
 
-Interet_genre:
+Interet_genre: DONE
     - Ajouter id_genre+ id_personne correspondant
     - Liste des intérêts d'une personne par genre
 
