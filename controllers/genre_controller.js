@@ -48,6 +48,22 @@ exports.findOne = (req, res) => {
     });
 };
 
+exports.findGenre = (req, res) => {
+    Genre.FindGenreID(req.params.genresNAME, (err, data) => {
+        if (err) {
+            if (err.kind === "pas trouvé") {
+                res.status(404).send({
+                    message: `Genre pas trouvé nom ${req.params.genresNAME}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Erreur lors de la recherche genre avec nom " + req.params.genresNAME
+                });
+            }
+        } else res.send(data);
+    });
+};
+
 exports.delete = (req, res) => {
     Genre.remove(req.params.genresID, (err, data) => {
         if (err) {

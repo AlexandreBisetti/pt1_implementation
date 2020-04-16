@@ -12,4 +12,7 @@ module.exports = app => {
 
   // Liste de bouqins de ce genre
   app.get("/genres/:genresNAME", genre.findOne);
+
+  // Liste de bouqins de ce genre
+  app.get("/id/genres/:genresNAME", genre.findGenre);
 };
