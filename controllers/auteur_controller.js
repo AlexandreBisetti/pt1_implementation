@@ -56,6 +56,22 @@ exports.findOne = (req, res) => {
       });
 };
 
+exports.findExistentAuteur = (req, res) => {
+  Auteur.findByNameLastName(req.params.auteursPRENOM, req.params.auteursNOM, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `Auteur pas trouvé avec nom ${req.params.auteursNOM}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur lors de la recherche auteur nom " + req.params.auteursNOM
+        });
+      }
+    } else res.send(data);
+  });
+};
+
 // delete 1 auteur par ID
 exports.delete = (req, res) => {
     Auteur.remove(req.params.auteursID, (err, data) => {

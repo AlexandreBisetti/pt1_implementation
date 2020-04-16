@@ -12,7 +12,7 @@ module.exports = app => {
   //enregistrer 1 livre
   app.post("/livres/enregistrer/:livresID/:idEnregistre", livre.enregistrerLivre);
 
-  // Liste des Auteurs
+  // Liste des livres
   app.get("/livres", livre.findAll);
 
   // Livre par ID
@@ -29,4 +29,7 @@ module.exports = app => {
 
   // Livre recommandations genre match
   app.get("/livres/recommandations/listeGENRES/:idPersonne", livre.findRecommandationGENRES);
+
+  // Livre liste souhaits
+  app.get("/livres/souhaits/listeSOUHAIT/:idPersonne", livre.listeDesSouhaits);
 };

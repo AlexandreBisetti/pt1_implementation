@@ -1,11 +1,11 @@
 const InteretLivre = require("../models/interetLivre_modele");
 
 exports.InteretOf = (req, res) => {
-    InteretLivre.InteretPour(req.params.livresID, req.params.personneID, (err, data) => {
+    InteretLivre.InteretPour(req.params.ISBN, req.params.personneID, (err, data) => {
         if (err) {
             if (err.kind === "pas trouvé") {
                 res.status(404).send({
-                    message: `Livre pas trouvé avec id ${req.params.livresID}.`
+                    message: `Livre pas trouvé avec ISBN ${req.params.ISBN}.`
                 });
             } else {
                 res.status(500).send({
@@ -17,11 +17,11 @@ exports.InteretOf = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-    InteretLivre.remove(req.params.livresID, req.params.personneID, (err, data) => {
+    InteretLivre.remove(req.params.ISBN, req.params.personneID, (err, data) => {
         if (err) {
             if (err.kind === "pas trouvé") {
                 res.status(404).send({
-                    message: `Livre pas trouvé avec id ${req.params.livresID}.`
+                    message: `Livre pas trouvé avec ISBN ${req.params.ISBN}.`
                 });
             } else {
                 res.status(500).send({

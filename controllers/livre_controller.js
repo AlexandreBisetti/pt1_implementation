@@ -151,3 +151,14 @@ exports.findRecommandationGENRES = (req, res) => {
     else res.send(data);
   });
 };
+
+exports.listeDesSouhaits = (req, res) => {
+  Livre.livreInteretDispo(req.params.idPersonne, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Erreur récupération recommandations."
+      });
+    else res.send(data);
+  });
+};

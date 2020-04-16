@@ -27,44 +27,76 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    Client.getAll((err, data) => {
-        if (err)
-          res.status(500).send({
-            message:
-              err.message || "Erreur récupération client."
-          });
-        else res.send(data);
+  Client.getAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Erreur récupération client."
       });
+    else res.send(data);
+  });
 };
 
 exports.findOne = (req, res) => {
-    Client.findById(req.params.clientsID, (err, data) => {
-        if (err) {
-          if (err.kind === "pas trouvé") {
-            res.status(404).send({
-              message: `client pas trouvé avec id ${req.params.clientsID}.`
-            });
-          } else {
-            res.status(500).send({
-              message: "Erreur lors de la recherche client avec id " + req.params.clientsID
-            });
-          }
-        } else res.send(data);
-      });
+  Client.findById(req.params.clientsID, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `client pas trouvé avec id ${req.params.clientsID}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur lors de la recherche client avec id " + req.params.clientsID
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+exports.findLoginClient = (req, res) => {
+  Client.findLogin(req.params.clientsMAIL, req.params.clientsMDP, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `client pas trouvé avec mail ${req.params.clientsMAIL}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur lors de la recherche client mail " + req.params.clientsMAIL
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+exports.findClientMail = (req, res) => {
+  Client.findMail(req.params.clientsMAIL, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `erreur vérif mail`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur lors de la recherche client mail " + req.params.clientsMAIL
+        });
+      }
+    } else res.send(data);
+  });
 };
 
 exports.delete = (req, res) => {
-    Client.remove(req.params.clientsID, (err, data) => {
-        if (err) {
-          if (err.kind === "pas trouvé") {
-            res.status(404).send({
-              message: `Client pas trouvé avec id ${req.params.clientsID}.`
-            });
-          } else {
-            res.status(500).send({
-              message: "Impossible de supprimer client avec id " + req.params.clientsID
-            });
-          }
-        } else res.send({ message: `Client supprimé` });
-      });
+  Client.remove(req.params.clientsID, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `Client pas trouvé avec id ${req.params.clientsID}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Impossible de supprimer client avec id " + req.params.clientsID
+        });
+      }
+    } else res.send({ message: `Client supprimé` });
+  });
 };

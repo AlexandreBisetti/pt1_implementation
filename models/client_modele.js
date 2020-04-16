@@ -38,6 +38,43 @@ Client.findById = (clientsID, result) => {
   });
 };
 
+
+Client.findLogin = (clientsMAIL, clientsMDP, result) => {
+  sql.query(`SELECT ID_personne FROM Client WHERE Courriel = "${clientsMAIL}" and Mot_de_passe = "${clientsMDP}"`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("ID client: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+    console.log("Resultat ", { resultat : false});
+    result(null, { resultat : false});
+  });
+};
+
+Client.findMail = (clientsMAIL, result) => {
+  sql.query(`SELECT ID_personne FROM Client WHERE Courriel = "${clientsMAIL}"`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("Mail existe déjà", { resultat : true});
+      result(null, { resultat : true, mail: clientsMAIL});
+      return;
+    }
+    console.log("Resultat ", { mail: clientsMAIL, resultat : false});
+    result(null, { resultat : false});
+  });
+};
+
 Client.getAll = result => {
   sql.query("SELECT * FROM Client, Personne WHERE Client.ID_personne = Personne.ID_personne", (err, res) => {
     if (err) {

@@ -39,6 +39,24 @@ Auteur.findById = (auteursID, result) => {
   });
 };
 
+Auteur.findByNameLastName = (auteursPRENOM, auteursNOM, result) => {
+  sql.query(`SELECT ID_auteur FROM Auteur WHERE Nom = "${auteursNOM}" and Prenom = "${auteursPRENOM}"`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("ID auteur: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+    console.log("Resultat ", { resultat : false});
+    result(null, { resultat : false});
+  });
+};
+
 Auteur.getAll = result => {
   sql.query("SELECT * FROM Auteur", (err, res) => {
     if (err) {

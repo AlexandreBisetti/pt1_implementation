@@ -142,4 +142,16 @@ Livre.RecommandationsGENRES = (personneID, result) => {
     result(null, res);
   });
 };
+
+Livre.livreInteretDispo = (personneID, result) => {
+  sql.query(`SELECT DISTINCT Client.ID_personne, Livre.ID_Livre, Livre.Titre, Livre.Description, Auteur.Nom, Auteur.Prenom, estInteresse_livre FROM Livre, Auteur, Auteur_livre, Interet_Livre, Client WHERE Livre.ID_livre = Auteur_livre.ID_livre and Auteur_livre.ID_auteur = Auteur.ID_auteur and Interet_Livre.ISBN_livre = Livre.ISBN and estInteresse_livre = 1 and Client.ID_personne = ${personneID}`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Liste de souhait des livres: ", res);
+    result(null, res);
+  });
+};
 module.exports = Livre;
