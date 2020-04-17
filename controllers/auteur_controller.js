@@ -11,8 +11,7 @@ exports.create = (req, res) => {
 
   //  Création auteur
   const auteur = new Auteur({
-    Nom: req.body.Nom,
-    Prenom: req.body.Prenom
+    Nom_complet: req.body.Nom_complet
   });
 
   // Save auteur dans la BD
