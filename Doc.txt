@@ -1,6 +1,0 @@
-Alias
-Auteur(auteurLivre)
-Personne(client+employé) DONE
-Genre(genreLivre)
-Interet(auteur/genre/livre)
-Livre DONE

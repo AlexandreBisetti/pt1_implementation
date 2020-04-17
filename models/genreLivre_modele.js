@@ -12,7 +12,7 @@ GenreLivre.GenreDu = (genresID, livresID, result) => {
             result(err, null);
             return;
         }
-        console.log("Livre pris", { id_livre: livresID, id_genre: genresID });
+        console.log("Livre genre", { id_livre: livresID, id_genre: genresID });
         result(null, { id_livre: livresID, id_genre: genresID });
     });
 };

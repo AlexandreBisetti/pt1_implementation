@@ -57,15 +57,15 @@ exports.findOne = (req, res) => {
 };
 
 exports.findExistentAuteur = (req, res) => {
-  Auteur.findByNameLastName(req.params.auteursPRENOM, req.params.auteursNOM, (err, data) => {
+  Auteur.findByNameLastName(req.params.auteursNOMcomplet, (err, data) => {
     if (err) {
       if (err.kind === "pas trouvé") {
         res.status(404).send({
-          message: `Auteur pas trouvé avec nom ${req.params.auteursNOM}.`
+          message: `Auteur pas trouvé avec nom ${req.params.auteursNOMcomplet}.`
         });
       } else {
         res.status(500).send({
-          message: "Erreur lors de la recherche auteur nom " + req.params.auteursNOM
+          message: "Erreur lors de la recherche auteur nom " + req.params.auteursNOMcomplet
         });
       }
     } else res.send(data);

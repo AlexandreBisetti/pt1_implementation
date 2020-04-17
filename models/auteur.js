@@ -2,8 +2,7 @@ const sql = require("../DataB");
 
 // constructor Auteur
 const Auteur = function(auteur) {
-  this.Nom = auteur.Nom;
-  this.Prenom = auteur.Prenom;
+  this.Nom_complet = auteur.Nom_complet;
 };
 
 
@@ -39,8 +38,8 @@ Auteur.findById = (auteursID, result) => {
   });
 };
 
-Auteur.findByNameLastName = (auteursPRENOM, auteursNOM, result) => {
-  sql.query(`SELECT ID_auteur FROM Auteur WHERE Nom = "${auteursNOM}" and Prenom = "${auteursPRENOM}"`, (err, res) => {
+Auteur.findByNameLastName = (auteursNOMcomplet, result) => {
+  sql.query(`SELECT ID_auteur FROM Auteur WHERE Nom_complet = "${auteursNOMcomplet}"`, (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(err, null);
