@@ -16,6 +16,9 @@ module.exports = app => {
   // Liste des Auteurs --> Get auteur nom/prenom
   app.get("/verification/auteur/:auteursNOMcomplet", auteur.findExistentAuteur);
 
+  // Liste des Auteurs pour 1 livre
+  app.get("/liste/auteur/:livresID", auteur.findAuteurLivre);
+
   // Del auteur par ID
   app.delete("/auteurs/:auteursID", auteur.delete);
 };

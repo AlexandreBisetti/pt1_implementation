@@ -55,6 +55,23 @@ exports.findOne = (req, res) => {
       });
 };
 
+exports.findAuteurLivre = (req, res) => {
+  Auteur.findAuteurOf(req.params.livresID, (err, data) => {
+      if (err) {
+        if (err.kind === "pas trouvé") {
+          res.status(404).send({
+            message: `Livre pas trouvé avec id ${req.params.livresID}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Erreur lors de la recherche livre avec id " + req.params.livresID
+          });
+        }
+      } else res.send(data);
+    });
+};
+
+
 exports.findExistentAuteur = (req, res) => {
   Auteur.findByNameLastName(req.params.auteursNOMcomplet, (err, data) => {
     if (err) {

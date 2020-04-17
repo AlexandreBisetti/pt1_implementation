@@ -56,6 +56,18 @@ Auteur.findByNameLastName = (auteursNOMcomplet, result) => {
   });
 };
 
+Auteur.findAuteurOf = (livresID, result) => {
+  sql.query(`SELECT Auteur.Nom_complet FROM Auteur, Auteur_livre, Livre WHERE Auteur.ID_auteur = Auteur_livre.ID_auteur and Auteur_livre.ID_livre = Livre.ID_livre and Livre.ID_livre = "${livresID}"`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Auteurs du livre trouvé: ", res);
+    result(null, res);
+  });
+};
+
 Auteur.getAll = result => {
   sql.query("SELECT * FROM Auteur", (err, res) => {
     if (err) {
