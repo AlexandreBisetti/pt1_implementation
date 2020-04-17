@@ -7,6 +7,9 @@ module.exports = app => {
   // Liste de tout les genres
   app.get("/genres", genre.findAll);
 
+  // liste genre d'un livre
+  app.get("/liste/genres/:livresID", genre.findGenreLivre);
+
   // Del genre par ID
   app.delete("/genres/:genresID", genre.delete);
 

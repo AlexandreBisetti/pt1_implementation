@@ -41,6 +41,18 @@ Genre.FindAllBooks = (genresNAME, result) => {
   });
 };
 
+Genre.FindGenreOf = (livresID, result) => {
+  sql.query("SELECT Genre.Genre FROM Genre, Genre_livre, Livre WHERE Genre.ID_genre = Genre_livre.ID_genre and Genre_livre.ID_livre = Livre.ID_livre and Livre.ID_livre = ?", livresID, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Genre du livre trouvé: ", res);
+    result(null, res);
+  });
+};
+
 Genre.FindGenreID = (genresNAME, result) => {
   sql.query("SELECT * FROM Genre WHERE Genre = ?", genresNAME, (err, res) => {
     if (err) {

@@ -48,6 +48,22 @@ exports.findOne = (req, res) => {
     });
 };
 
+exports.findGenreLivre = (req, res) => {
+    Genre.FindGenreOf(req.params.livresID, (err, data) => {
+        if (err) {
+            if (err.kind === "pas trouvé") {
+                res.status(404).send({
+                    message: `livre pas trouvé id ${req.params.livresID}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Erreur lors de la recherche genre avec id livre " + req.params.livresID
+                });
+            }
+        } else res.send(data);
+    });
+};
+
 exports.findGenre = (req, res) => {
     Genre.FindGenreID(req.params.genresNAME, (err, data) => {
         if (err) {
