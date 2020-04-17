@@ -13,6 +13,12 @@ module.exports = app => {
   // verif unicité mail
   app.get("/clients/verificationMAIL/:clientsMAIL", client.findClientMail);
 
+  // verif credits
+  app.get("/credits/verification/:clientsID", client.findCreditClient);
+
+  // verif credits
+  app.post("/credits/ajouter/:clientsID", client.crediterClient);
+
   // Liste des clients --> Get client par ID
   app.get("/clients/:clientsID", client.findOne);
 

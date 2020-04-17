@@ -1,12 +1,12 @@
 const sql = require("../DataB");
 
-const Client = function(client) {
-    this.ID_personne = client.ID_personne;
-    this.Numero_telephone = client.Numero_telephone;
-    this.Adresse_client = client.Adresse_client;
-    this.Credits = client.Credits;
-    this.Courriel = client.Courriel;
-    this.Mot_de_passe = client.Mot_de_passe;
+const Client = function (client) {
+  this.ID_personne = client.ID_personne;
+  this.Numero_telephone = client.Numero_telephone;
+  this.Adresse_client = client.Adresse_client;
+  this.Credits = client.Credits;
+  this.Courriel = client.Courriel;
+  this.Mot_de_passe = client.Mot_de_passe;
 };
 
 Client.create = (newClient, result) => {
@@ -16,8 +16,8 @@ Client.create = (newClient, result) => {
       result(err, null);
       return;
     }
-    console.log("nouveau client: ", {...newClient });
-    result(null, {...newClient });
+    console.log("nouveau client: ", { ...newClient });
+    result(null, { ...newClient });
   });
 };
 
@@ -38,6 +38,18 @@ Client.findById = (clientsID, result) => {
   });
 };
 
+Client.findCredits = (clientsID, result) => {
+  sql.query("SELECT Credits FROM Client WHERE Client.ID_personne = ?", clientsID, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Crédits", res);
+    result(null, res);
+    return;
+  });
+};
 
 Client.findLogin = (clientsMAIL, clientsMDP, result) => {
   sql.query(`SELECT ID_personne FROM Client WHERE Courriel = "${clientsMAIL}" and Mot_de_passe = "${clientsMDP}"`, (err, res) => {
@@ -52,8 +64,8 @@ Client.findLogin = (clientsMAIL, clientsMDP, result) => {
       result(null, res[0]);
       return;
     }
-    console.log("Resultat ", { resultat : false});
-    result(null, { resultat : false});
+    console.log("Resultat ", { resultat: false });
+    result(null, { resultat: false });
   });
 };
 
@@ -66,14 +78,27 @@ Client.findMail = (clientsMAIL, result) => {
     }
 
     if (res.length) {
-      console.log("Mail existe déjà", { resultat : true});
-      result(null, { resultat : true, mail: clientsMAIL});
+      console.log("Mail existe déjà", { resultat: true });
+      result(null, { resultat: true, mail: clientsMAIL });
       return;
     }
-    console.log("Resultat ", { mail: clientsMAIL, resultat : false});
-    result(null, { resultat : false});
+    console.log("Resultat ", { mail: clientsMAIL, resultat: false });
+    result(null, { resultat: false });
   });
 };
+
+Client.Crediter = (clientsID, result) => {
+  sql.query(`UPDATE Client SET Credits = Credits + 1 WHERE ID_personne = ${clientsID}`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Créditer", res);
+    result(null, res);
+  });
+};
+
 
 Client.getAll = result => {
   sql.query("SELECT * FROM Client, Personne WHERE Client.ID_personne = Personne.ID_personne", (err, res) => {

@@ -53,7 +53,6 @@ Livre.getAll = result => {
   });
 };
 
-
 Livre.remove = (id, result) => {
   sql.query("DELETE FROM Livre WHERE ID_Livre = ?", id, (err, res) => {
     if (err) {
