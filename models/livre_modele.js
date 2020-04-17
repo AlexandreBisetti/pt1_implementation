@@ -42,7 +42,7 @@ Livre.findById = (livresID, result) => {
 };
 
 Livre.getAll = result => {
-  sql.query("SELECT DISTINCT * FROM Livre, Auteur, Auteur_livre WHERE Auteur.ID_auteur = Auteur_livre.ID_auteur and Livre.ID_livre = Auteur_livre.ID_livre and Livre.Verifie = 1 and Livre.ID_Personne_Echange IS NULL", (err, res) => {
+  sql.query("SELECT DISTINCT * FROM Livre WHERE Livre.Verifie = 1 and Livre.ID_Personne_Echange IS NULL", (err, res) => {
     if (err) {
       console.log("erreur: ", err);
       result(null, err);
@@ -52,6 +52,7 @@ Livre.getAll = result => {
     result(null, res);
   });
 };
+
 
 Livre.remove = (id, result) => {
   sql.query("DELETE FROM Livre WHERE ID_Livre = ?", id, (err, res) => {
