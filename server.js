@@ -15,7 +15,7 @@ app.use(cors());
 // default route serveur, si une requête sur ce path on retourne
 // comme "res (result)" un json.
 app.get("/", (req, res) => {
-  res.json({ message: "Wallah t'es sur la page FDP." });
+  res.json({ message: "Bienvenue sur notre service d'échange de livre" });
 });
 
 require("./routes/auteur_routes")(app);
