@@ -16,6 +16,38 @@ exports.InteretOf = (req, res) => {
     });
 }
 
+exports.LivresDisponible = (req, res) => {
+    InteretLivre.LivreDispo(req.params.ISBN, (err, data) => {
+        if (err) {
+            if (err.kind === "pas trouvé") {
+                res.status(404).send({
+                    message: `Livre pas trouvé avec ISBN ${req.params.ISBN}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Erreur " + req.params.ISBN
+                });
+            }
+        } else res.send(data);
+    });
+}
+
+exports.FindByIDPersonne = (req, res) => {
+    InteretLivre.findById(req.params.personneID, (err, data) => {
+        if (err) {
+            if (err.kind === "pas trouvé") {
+                res.status(404).send({
+                    message: `Erreur personne ${req.params.personneID}.`
+                });
+            } else {
+                res.status(500).send({
+                    message: "Erreur pas de personne " + req.params.personneID
+                });
+            }
+        } else res.send(data);
+    });
+}
+
 exports.delete = (req, res) => {
     InteretLivre.remove(req.params.ISBN, req.params.personneID, (err, data) => {
         if (err) {

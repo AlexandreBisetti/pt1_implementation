@@ -17,6 +17,30 @@ InteretLivre.InteretPour = (ISBN, personneID, result) => {
     });
 };
 
+InteretLivre.LivreDispo = (ISBN, result) => {
+    sql.query("SELECT Livre.ID_livre FROM Livre WHERE Verifie = 1 and Livre.ID_Personne_Echange IS NULL and Livre.ISBN = ?",ISBN, (err, res) => {
+        if (err) {
+            console.log("erreur: ", err);
+            result(err, null);
+            return;
+        }
+        console.log("Livres correspondant à ISBN", res);
+        result(null, res);
+    });
+};
+
+InteretLivre.findById = (personneID, result) => {
+    sql.query("SELECT DISTINCT * FROM Interet_Livre WHERE Interet_Livre.ID_personne = ?",personneID , (err, res) => {
+      if (err) {
+        console.log("erreur: ", err);
+        result(null, err);
+        return;
+      }
+      console.log("Interets ", res);
+      result(null, res);
+    });
+  };
+
 InteretLivre.remove = (ISBN, personneID, result) => {
     sql.query(`DELETE FROM Interet_Livre WHERE ID_personne = ${personneID} and ISBN_livre = ${ISBN}`, (err, res) => {
         if (err) {
