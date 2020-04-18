@@ -85,7 +85,6 @@ exports.decrediterClient = (req, res) => {
   });
 }
 
-
 exports.findCreditClient = (req, res) => {
   Client.findCredits(req.params.clientsID, (err, data) => {
     if (err) {
