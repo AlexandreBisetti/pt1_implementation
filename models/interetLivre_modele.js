@@ -6,7 +6,7 @@ const InteretLivre = function (interetLivre) {
 };
 
 InteretLivre.InteretPour = (ISBN, personneID, result) => {
-    sql.query(`INSERT INTO Interet_Livre SET ISBN_livre = ${ISBN}, ID_personne = ${personneID}, estInteresse_livre = 1`, (err, res) => {
+    sql.query(`INSERT INTO Interet_Livre SET ISBN_livre = "${ISBN}", ID_personne = ${personneID}, estInteresse_livre = 1`, (err, res) => {
         if (err) {
             console.log("erreur: ", err);
             result(err, null);
