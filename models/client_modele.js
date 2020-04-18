@@ -99,6 +99,17 @@ Client.Crediter = (clientsID, result) => {
   });
 };
 
+Client.Decrediter = (clientsID, result) => {
+  sql.query(`UPDATE Client SET Credits = Credits - 1 WHERE ID_personne = ${clientsID}`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+    console.log("Décréditer", res);
+    result(null, res);
+  });
+};
 
 Client.getAll = result => {
   sql.query("SELECT * FROM Client, Personne WHERE Client.ID_personne = Personne.ID_personne", (err, res) => {

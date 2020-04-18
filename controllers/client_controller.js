@@ -69,6 +69,23 @@ exports.crediterClient = (req, res) => {
   });
 }
 
+exports.decrediterClient = (req, res) => {
+  Client.Decrediter(req.params.clientsID, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `Client pas trouvé avec id ${req.params.clientsID}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur lors du crédit client " + req.params.clientsID
+        });
+      }
+    } else res.send(data);
+  });
+}
+
+
 exports.findCreditClient = (req, res) => {
   Client.findCredits(req.params.clientsID, (err, data) => {
     if (err) {

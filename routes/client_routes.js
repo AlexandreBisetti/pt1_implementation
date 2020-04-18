@@ -16,8 +16,11 @@ module.exports = app => {
   // verif credits
   app.get("/credits/verification/:clientsID", client.findCreditClient);
 
-  // verif credits
+  // ajouter credits
   app.post("/credits/ajouter/:clientsID", client.crediterClient);
+
+  // enlever credits
+  app.post("/credits/enlever/:clientsID", client.decrediterClient);
 
   // Liste des clients --> Get client par ID
   app.get("/clients/:clientsID", client.findOne);
