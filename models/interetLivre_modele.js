@@ -42,7 +42,7 @@ InteretLivre.findById = (personneID, result) => {
   };
 
 InteretLivre.remove = (ISBN, personneID, result) => {
-    sql.query(`DELETE FROM Interet_Livre WHERE ID_personne = ${personneID} and ISBN_livre = ${ISBN}`, (err, res) => {
+    sql.query(`DELETE FROM Interet_Livre WHERE ID_personne = ${personneID} and ISBN_livre = "${ISBN}"`, (err, res) => {
         if (err) {
             console.log("erreur: ", err);
             result(null, err);
