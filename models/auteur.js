@@ -1,12 +1,9 @@
 const sql = require("../DataB");
 
-// constructor Auteur
 const Auteur = function(auteur) {
   this.Nom_complet = auteur.Nom_complet;
 };
 
-
-// on utilise query() pour se connecteur à la BD et passer les requêtes SQL insert/select/etc...
 Auteur.create = (newAuteur, result) => {
   sql.query("INSERT INTO Auteur SET ?", newAuteur, (err, res) => {
     if (err) {
@@ -33,7 +30,6 @@ Auteur.findById = (auteursID, result) => {
       return;
     }
 
-    // auteur pas trouvé avec cet ID
     result({ kind: "Auteur pas trouvé" }, null);
   });
 };
@@ -90,7 +86,6 @@ Auteur.remove = (id, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // pas trouvé d'auteur avec l'ID
       result({ kind: "auteur pas trouvé" }, null);
       return;
     }

@@ -1,6 +1,5 @@
 const sql = require("../DataB");
 
-// personne constructeur
 const Personne = function (personne) {
     this.Nom = personne.Nom;
     this.Prenom = personne.Prenom;
@@ -29,7 +28,6 @@ Personne.remove = (id, result) => {
         }
 
         if (res.affectedRows == 0) {
-            // pas trouvé de personne avec l'ID
             result({ kind: "personne pas trouvé" }, null);
             return;
         }

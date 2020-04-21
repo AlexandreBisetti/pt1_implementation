@@ -1,15 +1,11 @@
 const Personne = require("../models/personne_modele");
 
-// créer 1 personne
 exports.create = (req, res) => {
-    // Validate request
     if (!req.body) {
         res.status(400).send({
             message: "Attention vide!"
         });
     }
-
-    //  Création Personne
     const personne = new Personne({
         Nom: req.body.Nom,
         Prenom: req.body.Prenom,
@@ -17,7 +13,6 @@ exports.create = (req, res) => {
         Nationalite: req.body.Nationalite
     });
 
-    // Save personne dans la BD
     Personne.create(personne, (err, data) => {
         if (err)
             res.status(500).send({
@@ -28,7 +23,6 @@ exports.create = (req, res) => {
     });
 };
 
-// delete 1 personne par ID
 exports.delete = (req, res) => {
     Personne.remove(req.params.personnesID, (err, data) => {
         if (err) {
