@@ -66,3 +66,19 @@ exports.delete = (req, res) => {
         } else res.send({ message: `Employe supprimé` });
       });
 };
+
+exports.findLoginEmploye = (req, res) => {
+  Employe.findLogin(req.params.employesLOGIN, req.params.employesMDP, (err, data) => {
+    if (err) {
+      if (err.kind === "pas trouvé") {
+        res.status(404).send({
+          message: `Employé pas trouvé avec login ${req.params.employesLOGIN}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur lors de la recherche employé login " + req.params.employesLOGIN
+        });
+      }
+    } else res.send(data);
+  });
+};

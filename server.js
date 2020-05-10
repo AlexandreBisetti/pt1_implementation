@@ -20,7 +20,6 @@ require("./routes/client_routes")(app);
 require("./routes/employe_routes")(app);
 require("./routes/livre_routes")(app);
 require("./routes/genre_routes")(app);
-require("./routes/alias_routes")(app);
 require("./routes/auteurLivre_routes")(app);
 require("./routes/genreLivre_routes")(app);
 require("./routes/interetGenre_routes")(app)

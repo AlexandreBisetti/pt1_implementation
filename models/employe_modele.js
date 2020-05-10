@@ -68,4 +68,22 @@ Employe.remove = (id, result) => {
   });
 };
 
+Employe.findLogin = (employesLOGIN, employesMDP, result) => {
+  sql.query(`SELECT ID_personne FROM Employe WHERE Employe_login = "${employesLOGIN}" and Employe_mdp = "${employesMDP}"`, (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("ID employe: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+    console.log("Resultat ", { resultat: false });
+    result(null, { resultat: false });
+  });
+};
+
 module.exports = Employe;
