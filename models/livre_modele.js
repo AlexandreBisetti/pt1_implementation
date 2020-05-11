@@ -53,6 +53,18 @@ Livre.getAll = result => {
   });
 };
 
+Livre.getAllNotVerified = result => {
+  sql.query("SELECT DISTINCT * FROM Livre WHERE Livre.Verifie = 0 and Livre.ID_Personne_Employe IS NULL", (err, res) => {
+    if (err) {
+      console.log("erreur: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Liste des livres non vérifés: ", res);
+    result(null, res);
+  });
+};
+
 Livre.remove = (id, result) => {
   sql.query("DELETE FROM Livre WHERE ID_Livre = ?", id, (err, res) => {
     if (err) {

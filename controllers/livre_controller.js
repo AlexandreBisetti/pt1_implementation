@@ -39,6 +39,17 @@ exports.findAll = (req, res) => {
   });
 };
 
+exports.findAllNotVerified = (req, res) => {
+  Livre.getAllNotVerified((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Erreur récupération livre."
+      });
+    else res.send(data);
+  });
+};
+
 exports.findOne = (req, res) => {
   Livre.findById(req.params.livresID, (err, data) => {
     if (err) {
