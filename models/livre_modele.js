@@ -8,7 +8,6 @@ const Livre = function (livre) {
   this.Editeur = livre.Editeur;
   this.Annee_parution = livre.Annee_parution;
   this.Langue = livre.Langue;
-  this.Verifie = livre.Verifie;
 };
 
 Livre.create = (newLivre, result) => {

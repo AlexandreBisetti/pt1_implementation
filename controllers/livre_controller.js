@@ -15,7 +15,6 @@ exports.create = (req, res) => {
     Editeur: req.body.Editeur,
     Annee_parution: req.body.Annee_parution,
     Langue: req.body.Langue,
-    Verifie: req.body.Verifie
   });
 
   Livre.create(livre, (err, data) => {
