@@ -1,3 +1,4 @@
 # PT1
 **Projet Transversal 1**
-Good luck
+Ceci est le serveur d'API pour le projet transversal n°1.
+
